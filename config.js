@@ -1,0 +1,1 @@
+const CONFIG = {}; // यह फाइल install.html द्वारा generate होगी

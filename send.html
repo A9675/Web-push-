@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>📢 Admin Panel - Notification भेजें</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 480px;
+      margin: auto;
+      background: #f0f2f5;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .status {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>📢 Admin Notification Panel</h2>
+  <form id="notifyForm">
+    <input type="text" id="title" placeholder="🔔 Notification Title" required>
+    <textarea id="message" placeholder="💬 Message" rows="3" required></textarea>
+    <input type="text" id="url" placeholder="🔗 Click URL (optional)" value="https://your-website.com">
+    <button type="submit">📤 Send Notification</button>
+  </form>
+  <div class="status" id="statusMsg"></div>
+  <script src="config.js"></script>
+  <script>
+    const form = document.getElementById("notifyForm");
+    const statusMsg = document.getElementById("statusMsg");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const title = document.getElementById("title").value;
+      const message = document.getElementById("message").value;
+      const url = document.getElementById("url").value;
+
+      statusMsg.innerText = "⏳ Sending...";
+
+      fetch(CONFIG.scriptUrl, {
+        method: "POST",
+        body: JSON.stringify({ title, message, url }),
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => res.text())
+      .then(result => {
+        statusMsg.innerText = "✅ Notification Sent!";
+      })
+      .catch(err => {
+        console.error(err);
+        statusMsg.innerText = "❌ Error sending notification.";
+      });
+    });
+  </script>
+</body>
+</html>
