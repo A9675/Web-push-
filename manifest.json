@@ -1,10 +1,10 @@
 {
-  "name": "Web Push Notification",
-  "short_name": "PushNotify",
-  "start_url": ".",
+  "name": "Notification Demo",
+  "short_name": "Notify",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "description": "Receive push notifications from our server",
+  "description": "Push Notification Demo",
   "icons": [{
     "src": "icon.png",
     "sizes": "192x192",
