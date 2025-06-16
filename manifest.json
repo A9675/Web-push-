@@ -1,13 +1,9 @@
 {
-  "name": "Web Push Notifications",
-  "short_name": "PushApp",
-  "start_url": "/index.html",
+  "name": "Web Push Notification",
+  "short_name": "PushNotify",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "description": "Receive instant notifications",
-  "icons": [{
-    "src": "icon.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  }]
+  "description": "Subscribe to push notifications",
+  "gcm_sender_id": "103953800507"
 }
